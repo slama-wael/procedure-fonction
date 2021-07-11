@@ -1,4 +1,4 @@
-PROCEDURE saisie(n : INTEGER , VAR tab : ARRAY_OF array[2*n])
+PROCEDURE saisie(n : INTEGER , VAR tab : ARRAY_OF integer[n][3])
 VAR
     i,j : INTEGER;
 BEGIN
@@ -8,12 +8,12 @@ BEGIN
         END_FOR
     END_FOR
 END
-PROCEDURE dot_prodact(n : INTEGER , VAR tab : ARRAY_OF array[2*n])
+PROCEDURE dot_product(n : INTEGER , VAR tab : ARRAY_OF array[2*n])
 VAR
     i : INTEGER
 BEGIN
-    FOR i FROM 0 TO 2*n-1 STEP 2  DO
-        IF (PS(tab[i] , tab[i+1]=0)) THEN
+    FOR i FROM 0 TO 2*(n-1) STEP 2  DO
+        IF (PS(tab[i] , tab[i+1])=0) THEN
             Writeln ("les deux vecteurs", tab[i] , "et " , tab[i+1] , "sont orthogonaux.");
         ELSE
             Writeln ("les deux vecteurs", tab[i] , "et " , tab[i+1] , "ne sont pas orthogonaux.");
@@ -34,7 +34,7 @@ BEGIN
 END
 
 
-ALGORITHM dot_prodact
+ALGORITHM product
 VAR
     n : INTEGER;
     v : ARRAY_OF ARRAY [2*n];
@@ -43,5 +43,5 @@ BEGIN
     Writeln("donner le nombre de paire de vecteur.");
     read(n);
     saisie(n,v);
-    dot_prodact(n,v);
+    dot_product(n,v);
 END
